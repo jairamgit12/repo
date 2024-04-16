@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="center">
+    <div id="container">
+        <h2>Tell us about your room</h2>
+        <label for="">Where is your room?</label><input type="text">
+        <label for="">How much is the room rent?</label><input type="number" name="" id="">
+    <label for="">How many bedrooms?</label><input type="number" name="" id="">
+    <label for="">How many bathrooms?</label><input type="number" name="" id="">
+    <label for="">How many roommates currently?</label><input type="number" id="numRoommates" name="" id=""onclick="updateRoommates()">
+    <label for="">How many vacancies in the room?</label><input type="number" name="" id="">
+    <label for="">Prefered bedroom type:</label><label>
+        <input type="radio" name="bedroom" value="Shared" />
+        Shared
+        <br>
+        <input type="radio" name="bedroom" value="Individual" />
+        Individual
+    </label>
+    <label>Upload Images of the room</label>
+    <input type="file" name="" id="">
+    <label for=""><h3>Current Roommate Details</h3></label>
+    <table id="roommateTable">
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Designation</th>
+            <th id="nameHeader">Place of work</th>
+            <th id="roleHeader">Role</th>
+            <th>Hobbies</th>
+            <th>Gender</th>
+        </tr>
+    </table>
+    <button id="meow">Post</button>
+    </div>        
+</div>
+<script>
+    function updateRoommates() {
+        var table = document.getElementById("roommateTable");
+        var numRoommates = document.getElementById("numRoommates").value;
+        var currentRows = table.rows.length - 1;
+        if (numRoommates>0) {
+            table.style.display='table'
+            
+            if (numRoommates > currentRows) {
+                // Add rows
+                for (var i = currentRows; i < numRoommates; i++) {
+                    var newRow = table.insertRow();
+
+                    var nameCell = newRow.insertCell();
+                    var countryCell = newRow.insertCell();
+                    var designationCell = newRow.insertCell();
+                    var workCell = newRow.insertCell();
+                    var roleCell = newRow.insertCell();
+                    var hobbiesCell = newRow.insertCell();
+                    var genderCell = newRow.insertCell();
+
+                    nameCell.innerHTML = "<input type='text' name='name[]'>";
+                    countryCell.innerHTML = "<input type='text' name='country[]'>";
+                    designationCell.innerHTML = "<input type='text' name='designation[]'>";
+                    workCell.innerHTML = "<input type='text' name='work[]'>";
+                    roleCell.innerHTML = "<input type='text' name='role[]'>";
+                    hobbiesCell.innerHTML = "<input type='text' name='hobbies[]'>";
+                    genderCell.innerHTML = "<input type='text' name='gender[]'>";
+                }
+            } else if (numRoommates < currentRows) {
+                // Remove excess rows
+                while (currentRows > numRoommates) {
+                    table.deleteRow(currentRows);
+                    currentRows--;
+                }
+            }
+        }
+        else if (numRoommates<0) {
+            alert('Negative Value not supported')
+        } else {
+            table.style.display='none'
+        }
+    }
+    document.getElementById('meow').onclick=function (){
+        alert("succesfully posted")
+        window.open('feed.html', '_self')
+    }
+   
+    
+</script>
+</body>
+</html>

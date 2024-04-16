@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="center">
+    <div id="container">
+        <h2>Sign Up</h2>
+        <input type="text" placeholder="First Name" required>
+        <input type="text" placeholder="Last Name" required>
+        <input type="email" name="mail" id="mail" placeholder="Email address" required>
+        <input type="password" placeholder="New password" required>
+        <label for="dob">Date of birth:</label>
+        <input type="date" name="dob" id="dob"required>
+        <label for="gender">Gender:</label>
+        <label>
+            Male
+            <input type="radio" name="gender" value="male" />
+            Female
+            <input type="radio" name="gender" value="female" />
+        </label>
+        <button id="alert">Sign Up</button>
+    </div>
+    </div>
+    <script>
+        document.getElementById('alert').onclick = function () {
+            alert('Account Created, login with new credentials');
+            window.open('login.html', '_self');
+        };
+    </script>
+</body>
+</html>
